@@ -6,17 +6,40 @@ Machine learning technqiues were applied to predict the heights of the aerosol m
 
 ## Introduction 
 
-The planetary boundary layer height (PBLH) influences various troposheric processes including aerosol distributions, convection, and cloud formation. However, its complex evolution challenges observations in the PBL. Currently, NASA Langely employs airborne High Spectral resolution lidars (HSRL) and Differential Absorption Lidars (DIAL) to obtain vertical profiles of various atmospheric constituents at high spatial and temporal evolutions. These observables play a crucial role in the derivation of the aerosol mixed layer height (e.g. the height at which pariculates are well-mixed). Currently, MLHs are derived using an algorithm based on the Haar wavelet covariance transform method (WCT), which relies upon manually-adjusted threshold values for accurate MLH estiamtes. In addition, the estimations require a time-consuming quality-inspection process to correct remaining outliers. To create a more automated algorithm, this project utilizes datasets from HALO (High Spectral Resolution Lidar) and two field campaigns CPEX-AW (2021), ACT-America (2019) as inputs to a supervised machine learning algorithm. Since the predictions are height estimations, a regression-based algorithm is selected (ensemble method). 
+The planetary boundary layer height (PBLH) influences various troposheric processes including aerosol distributions, convection, and cloud formation. However, its complex evolution challenges observations in the PBL. Currently, NASA Langely employs airborne High Spectral resolution lidars (HSRL) and Differential Absorption Lidars (DIAL) to obtain vertical profiles of various atmospheric constituents at high spatial and temporal evolutions. These observables play a crucial role in the derivation of the aerosol mixed layer height (e.g. the height at which pariculates are well-mixed). Currently, MLHs are derived using an algorithm based on the Haar wavelet covariance transform method (WCT), which relies upon manually-adjusted threshold values for accurate MLH estiamtes. In addition, the estimations require a time-consuming quality-inspection process to correct remaining outliers. To create a more automated algorithm, this project utilizes datasets from HALO (High Spectral Resolution Lidar) and two field campaigns CPEX-AW (2021), ACT-America (2019) as inputs to a supervised machine learning algorithm. Since the predictions are height estimations, a regression-based algorithm was selected (i.e. regression ensemble model). 
 
+We did this to compute mixed layer heights for five flights within ACT-America and CPEX-AW. We see increased model performance compared to the default method with the inclusion of ensemble learning methods, illustrating an advantage for automizing mixed layer height prediction. Further work is needed to address more complex scenes and environments for more accuarte prediction. 
 
+## Data Background
 
+The dataset is comprised of data from two field campaigns ACT-America and CPEX-AW. 
 
+ACT-America (Atmospheric Carbon and Transport - America):
+Location: Eastern U.S. 
+Mission Background: Airborne campaign to study the transport and fluxes of atmospheric carbon dioxide and methane
+Instrument: HALO (High Altitude Lidar Observatory)
 
-We did this to solve the problem. We concluded that...
+CPEX-AW (Convective Processes Experiment - Aerosols and Winds):
+Location: St. Croix 
+Mission Background: Airborne campaign to study dynamics and microphysics related to the Saharan Air Layer, African Easterly Waves and Jets, Tropical Easterly Jet, and deep convection in the ITCZ. 
+Instrument: HALO (High Altitude Lidar Observatory)
 
-## Data
+## Predictor Selection
 
-Here is an overview of the dataset, how it was obtained and the preprocessing steps taken, with some plots!
+Since the current method of MLH prediction relies upon specific thresholds, the predictors included are selected mainly to weigh the sensitivity of thresholds.
+
+1) MLH (Thresh = 0.00001)
+2) MLH (Thresh = 0.0001)
+3) MLH (Thresh = 0.001)
+4) MLH (Thresh = 0.01)
+5-9) Vertical Variance in 532nm Backscatter Gradient (360m above and below MLHs)
+10-13) Temporal Variance in MLHs associated with predictors 1-4
+14) Solar Hour Angle
+15) Terrain Flag (land = 0; water = 1)
+
+## Reference Data
+
+The quality-checked MLH data will serve as the observed dataset.
 
 ![](assets/IMG/datapenguin.png){: width="500" }
 
@@ -24,11 +47,9 @@ Here is an overview of the dataset, how it was obtained and the preprocessing st
 
 ## Modelling
 
-Here are some more details about the machine learning approach, and why this was deemed appropriate for the dataset. 
+A supervised learning approach was implemented to predict altitudes of mixed layer heights (in meters) for multiple flights within the ACT-America and CPEX-CV field campaigns. 23 flights were randomized and split into training (19 flights) and testing (5 flights). A regression ensemble approach was implemented to model the heights. 
 
-The model might involve optimizing some quantity. You can include snippets of code if it is helpful to explain things.
-
-```python
+```matlab 
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.datasets import make_classification
 X, y = make_classification(n_features=4, random_state=0)
