@@ -47,12 +47,10 @@ Since the current method of MLH prediction relies upon specific thresholds, the 
 
 The quality-checked, MLHs serve as the refernce data for the training and testing data. Thresholds were adjusted manually and by eye to capture the correct aerosol gradient. 
 
+
 ![gifbug](assets/IMG/20190724_F1_MLH.png)
 
-*Figure 2: Example of observables and products obtained from airborne lidar.*
-
-
-
+*Figure 2: Quality-Checked MLHs shown for a flight on June 24, 2019 during the ACT-America campaign.*
 
 # Modelling
 
