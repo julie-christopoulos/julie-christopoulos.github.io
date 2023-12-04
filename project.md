@@ -6,24 +6,24 @@
 
 # Introduction 
 
-The planetary boundary layer height (PBLH) influences various troposheric processes including aerosol distributions, convection, and cloud formation. However, its complex evolution challenges observations in the PBL. Currently, NASA Langely employs airborne High Spectral resolution lidars (HSRL) and Differential Absorption Lidars (DIAL) to obtain vertical profiles of various atmospheric constituents at high spatial and temporal evolutions. These observables play a crucial role in the derivation of the aerosol mixed layer height (e.g. the height at which pariculates are well-mixed). Currently, MLHs are derived using an algorithm based on the Haar wavelet covariance transform method (WCT), which relies upon manually-adjusted threshold values for accurate MLH estiamtes. In addition, the estimations require a time-consuming quality-inspection process to correct remaining outliers. To create a more automated algorithm, this project utilizes datasets from HALO (High Spectral Resolution Lidar) and two field campaigns CPEX-AW (2021), ACT-America (2019) as inputs to a supervised machine learning algorithm. Since the predictions are height estimations, a regression-based algorithm was selected (i.e. regression ensemble model). 
+The planetary boundary layer height (PBLH) influences various troposheric processes including aerosol distributions, convection, and cloud formation. However, its complex evolution challenges observations in the PBL. Currently, NASA Langely employs airborne High Spectral resolution lidars (HSRL) and Differential Absorption Lidars (DIAL) to obtain vertical profiles of various atmospheric constituents at high spatial and temporal evolutions. These observables play a crucial role in the derivation of the aerosol mixed layer height (e.g. one method to desribe the PBLH; the height by which aerosols are well dispersed). Currently, MLHs are derived using an algorithm based on the Haar wavelet covariance transform method (WCT), which relies upon manually-adjusted threshold values for accurate MLH estimates. In addition, the estimations require a time-consuming quality-inspection process to correct remaining outliers. 
 
-We did this to compute mixed layer heights for five flights within ACT-America and CPEX-AW. We see increased model performance compared to the default method with the inclusion of ensemble learning methods, illustrating an advantage for automizing mixed layer height prediction. Further work is needed to address more complex scenes and environments for more accuarte prediction. 
+To create an automized algorithm, this project utilized datasets from two airborne lidar field campaigns (CPEX-AW (2021) and ACT-America (2019)) as inputs to a supervised machine learning algorithm. A regression-based algorithm was selected (i.e. the ensemble learning model). This model was used to compute automized MLHsfor five flights within ACT-America and CPEX-AW. Overall, increased model performance compared to the default method with the inclusion of ensemble learning methods, illustrating an advantage for automizing mixed layer height prediction. Further work is needed to address more complex scenes and environments increased prediction accuracy. 
 
 # Data
 
 ## Background
-The dataset is comprised of data from two field campaigns ACT-America and CPEX-AW. 
+The lidar dataset is comprised of data from two field campaigns ACT-America and CPEX-AW. 
 
 **ACT-America 2019** (Atmospheric Carbon and Transport - America):
 * <u>Location:<u> Eastern U.S. 
 * <u>Mission Background:<u> Airborne campaign to study the transport and fluxes of atmospheric carbon dioxide and methane
-* <u>Instrument:<u> HALO (High Altitude Lidar Observatory)
+* Instrument: HALO (High Altitude Lidar Observatory)
 
 **CPEX-AW 2021** (Convective Processes Experiment - Aerosols and Winds):
-* <u>Location:<u> St. Croix 
-* <u>Mission Background:<u> Airborne campaign to study dynamics and microphysics related to the Saharan Air Layer, African Easterly Waves and Jets, Tropical Easterly Jet, and deep convection in the ITCZ. 
-* <u>Instrument:<u> HALO (High Altitude Lidar Observatory)
+* Location: St. Croix 
+* Mission Background: Airborne campaign to study dynamics and microphysics related to the Saharan Air Layer, African Easterly Waves and Jets, Tropical Easterly Jet, and deep convection in the ITCZ. 
+* Instrument: HALO (High Altitude Lidar Observatory)
 
 ![gifbug](assets/IMG/variables.gif)
 
