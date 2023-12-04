@@ -77,7 +77,44 @@ end
 
 # Results
 
-Figure X shows... [description of Figure X].
+## Predictor Importance 
+
+![gifbug](assets/IMG/importance.png)
+
+*Figure 3: Predictor importance for ensemble learning method.*
+
+## Summary Statistics 
+
+
+
+
+
+
+
+*Table 1: Summary of Ensemble and default model performance.*
+
+To assess the performance of the ensemble learning model, predicted values were evalated against the quality-checked MLHs (observed values). In addition, the performance of the default method was assessed for comparison. 
+
+## Summary Plots
+
+![gifbug](assets/IMG/scatter.png)
+
+*Figure 4: Summary of the observed vs. predicted values for 5 test flights. .*
+
+![gifbug](assets/IMG/residuals.png)
+
+*Figure 5: Summary of the residuals for the 5 test flights.*
+
+
+## Test Flight Results
+
+![gifbug](assets/IMG/20190710_bsc.png)
+
+*Figure 6: Summary of the residuals for the 5 test flights.*
+
+![gifbug](assets/IMG/20210828_bsc.png)
+
+*Figure 7: Summary of the residuals for the 5 test flights.*
 
 # Discussion
 
