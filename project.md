@@ -28,15 +28,16 @@ Instrument: HALO (High Altitude Lidar Observatory)
 ## Predictor Selection
 
 Since the current method of MLH prediction relies upon specific thresholds, the predictors included are selected mainly to weigh the sensitivity of thresholds.
-
-1) MLH (Thresh = 0.00001)
-2) MLH (Thresh = 0.0001)
-3) MLH (Thresh = 0.001)
-4) MLH (Thresh = 0.01)
-5-9) Vertical Variance in 532nm Backscatter Gradient (360m above and below MLHs)
-10-13) Temporal Variance in MLHs associated with predictors 1-4
-14) Solar Hour Angle
-15) Terrain Flag (land = 0; water = 1)
+| No. | Description                                                 |
+| --- | ----------------------------------------------------------- |
+| 1)  | MLH (Thresh = 0.00001)                                     |
+| 2)  | MLH (Thresh = 0.0001)                                      |
+| 3)  | MLH (Thresh = 0.001)                                       |
+| 4)  | MLH (Thresh = 0.01)                                        |
+| 5-9)| Vertical Variance in 532nm Backscatter Gradient (360m above and below MLHs) |
+| 10-13) | Temporal Variance in MLHs associated with predictors 1-4  |
+| 14) | Solar Hour Angle                                           |
+| 15) | Terrain Flag (land = 0; water = 1)                         |
 
 ## Reference Data
 
@@ -49,9 +50,9 @@ The quality-checked MLH data will serve as the observed dataset.
 
 # Modelling
 
-A supervised learning approach was implemented to predict altitudes of mixed layer heights (in meters) for multiple flights within the ACT-America and CPEX-CV field campaigns. 23 flights were randomized and split into training (19 flights) and testing (5 flights). A regression ensemble approach was implemented to model the heights. 
+A **supervised learning** approach was implemented to predict altitudes of mixed layer heights (in meters) for multiple flights within the ACT-America and CPEX-CV field campaigns. 23 flights were randomized and split into training (19 flights) and testing (5 flights). A regression ensemble approach was implemented to model the heights. 
 
-Model implementation example: 
+## Implementation
 ```matlab
 treeTemplate = templateTree('Surrogate','on','MaxNumSplits',200);
 ensemble = fitrensemble(train_data,train_arch,'Method','Bag','Learners',treeTemplate);
