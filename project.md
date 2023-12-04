@@ -20,15 +20,10 @@ The lidar dataset is comprised of data from two field campaigns ACT-America and 
 * <u>Mission Background:<u> Airborne campaign to study the transport and fluxes of atmospheric carbon dioxide and methane
 * Instrument: HALO (High Altitude Lidar Observatory)
 
-![gifbug](assets/IMG/act-america.png)  
-
 **CPEX-AW 2021** (Convective Processes Experiment - Aerosols and Winds):
 * Location: St. Croix 
 * Mission Background: Airborne campaign to study dynamics and microphysics related to the Saharan Air Layer, African Easterly Waves and Jets, Tropical Easterly Jet, and deep convection in the ITCZ. 
 * Instrument: HALO (High Altitude Lidar Observatory)
-
-![gifbug](assets/IMG/cpex_logo.png)  
-
 
 ## Predictor Selection
 
@@ -47,7 +42,6 @@ Since the current method of MLH prediction relies upon specific thresholds, the 
 ## Reference Data
 
 The quality-checked, MLHs serve as the refernce data for the training and testing data. Thresholds were adjusted manually and by eye to capture the correct aerosol gradient. 
-
 
 ![gifbug](assets/IMG/20190724_F1_MLH.png)
 
@@ -113,9 +107,17 @@ To assess the performance of the ensemble learning model, predicted values were 
 
 *Figure 6: Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for June 10, 2019 (ACT-America).*
 
+| Method              | NMB   | NME   | MB      | ME     | RMSE   | CORR |
+|---------------------|-------|-------|---------|--------|--------|------|
+| Ensemble Learning   | -0.02 | 0.04  | -30.27  | 69.42  | 92.69  | 0.94 |
+
 ![gifbug](assets/IMG/20210828_bsc.png)
 
 *Figure 7: Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for August 28, 2021 (CPEX-AW).*
+
+| Method            | NMB   | NME   | MB    | ME    | RMSE   | CORR |
+|-------------------|-------|-------|-------|-------|--------|------|
+| Ensemble Learning | 0.02  | 0.06  | 12.07 | 34.92 | 58.42  | 0.89 |
 
 # Discussion
 
