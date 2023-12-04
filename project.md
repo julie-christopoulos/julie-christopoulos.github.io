@@ -26,7 +26,8 @@ Mission Background: Airborne campaign to study dynamics and microphysics related
 Instrument: HALO (High Altitude Lidar Observatory)
 
 ![gifbug](assets/IMG/variables.gif)
-*Figure 2: Example of observables and products obtained from airborne lidar . [1].*
+
+*Figure 1: Example of observables and products obtained from airborne lidar.*
 
 ## Predictor Selection
 
@@ -44,7 +45,11 @@ Since the current method of MLH prediction relies upon specific thresholds, the 
 
 ## Reference Data
 
-The quality-checked MLH data will serve as the observed dataset.
+The quality-checked, MLHs serve as the refernce data for the training and testing data. Thresholds were adjusted manually and by eye to capture the correct aerosol gradient. 
+
+![gifbug](assets/IMG/20190724_F1_MLH.png)
+
+*Figure 2: Example of observables and products obtained from airborne lidar.*
 
 
 
