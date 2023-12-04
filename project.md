@@ -41,7 +41,7 @@ Since the current method of MLH prediction relies upon specific thresholds, the 
 
 The quality-checked MLH data will serve as the observed dataset.
 
-![](assets/IMG/resdiduals.png)
+![](assets/IMG/varibales.gif){: width="100" }
 
 *Figure 1: Here is a caption for my diagram. This one shows a pengiun [1].*
 
@@ -49,16 +49,24 @@ The quality-checked MLH data will serve as the observed dataset.
 
 A supervised learning approach was implemented to predict altitudes of mixed layer heights (in meters) for multiple flights within the ACT-America and CPEX-CV field campaigns. 23 flights were randomized and split into training (19 flights) and testing (5 flights). A regression ensemble approach was implemented to model the heights. 
 
-```matlab 
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.datasets import make_classification
-X, y = make_classification(n_features=4, random_state=0)
-clf = ExtraTreesClassifier(n_estimators=100, random_state=0)
-clf.fit(X, y)
-clf.predict([[0, 0, 0, 0]])
-```
+Model implementation example: 
+```matlab
+treeTemplate = templateTree('Surrogate','on','MaxNumSplits',200);
+ensemble = fitrensemble(train_data,train_arch,'Method','Bag','Learners',treeTemplate);
+save('ensemble_model.mat','ensemble');
 
-This is how the method was developed.
+mlh_ens = cell(length(sp1_tst), 1);
+%Make Predictions for each flight
+for i = 1:length(testFiles)
+    test_MLH = sp1_tst{i};
+    nan_index = find(isnan(test_MLH));
+    test_data = [sp1_tst{i}', sp2_tst{i}', sp3_tst{i}', sp4_tst{i}',svvar_p1_tst{i}', svvar_p2_tst{i}', svvar_p3_tst{i}', svvar_p4_tst{i}',shvar_p1_tst{i}', shvar_p2_tst{i}', shvar_p3_tst{i}', shvar_p4_tst{i}',shangle_tst{i}',sflag_tst{i}'];
+    %Ensemble Prediction + recover units
+    ens_dat = predict(ensemble,test_data).* (max_arch - min_arch) + min_arch;
+    ens_dat(nan_index) = nan;
+    mlh_ens{i} = ens_dat';
+end
+```
 
 ## Results
 
