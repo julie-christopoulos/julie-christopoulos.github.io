@@ -1,6 +1,6 @@
 # Machine Learning for Predicting Aerosol Mixed Layer Heights 
 
-Machine learning technqiues were applied to predict the heights of the aerosol mixed layer (MLH) using an airborne lidar dataset.
+
 
 ***
 
