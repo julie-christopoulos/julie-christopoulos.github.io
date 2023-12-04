@@ -103,6 +103,8 @@ To assess the performance of the ensemble learning model, predicted values were 
 
 ## Test Flight Results
 
+### 20190710 ACT-America Test Flight 
+
 ![gifbug](assets/IMG/20190710_bsc.png)
 
 *Figure 6: Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for June 10, 2019 (ACT-America).*
@@ -111,6 +113,8 @@ To assess the performance of the ensemble learning model, predicted values were 
 |---------------------|-------|-------|---------|--------|--------|------|
 | Ensemble Learning   | -0.02 | 0.04  | -30.27  | 69.42  | 92.69  | 0.94 |
 
+
+### 20210828 CPEX-AW Test Flight 
 ![gifbug](assets/IMG/20210828_bsc.png)
 
 *Figure 7: Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for August 28, 2021 (CPEX-AW).*
