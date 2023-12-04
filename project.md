@@ -41,7 +41,7 @@ Since the current method of MLH prediction relies upon specific thresholds, the 
 
 The quality-checked MLH data will serve as the observed dataset.
 
-![](assets/variables.gif){: width="500" }
+![](assets/variables.gif)
 
 *Figure 1: Here is a caption for my diagram. This one shows a pengiun [1].*
 
