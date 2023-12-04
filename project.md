@@ -16,14 +16,14 @@ We did this to compute mixed layer heights for five flights within ACT-America a
 The dataset is comprised of data from two field campaigns ACT-America and CPEX-AW. 
 
 **ACT-America 2019** (Atmospheric Carbon and Transport - America):
-*<u>Location:<u> Eastern U.S. 
-*<u>Mission Background:<u> Airborne campaign to study the transport and fluxes of atmospheric carbon dioxide and methane
-*<u>Instrument:<u> HALO (High Altitude Lidar Observatory)
+* <u>Location:<u> Eastern U.S. 
+* <u>Mission Background:<u> Airborne campaign to study the transport and fluxes of atmospheric carbon dioxide and methane
+* <u>Instrument:<u> HALO (High Altitude Lidar Observatory)
 
 **CPEX-AW 2021** (Convective Processes Experiment - Aerosols and Winds):
-*<u>Location:<u> St. Croix 
-*<u>Mission Background:<u> Airborne campaign to study dynamics and microphysics related to the Saharan Air Layer, African Easterly Waves and Jets, Tropical Easterly Jet, and deep convection in the ITCZ. 
-*<u>Instrument:<u> HALO (High Altitude Lidar Observatory)
+* <u>Location:<u> St. Croix 
+* <u>Mission Background:<u> Airborne campaign to study dynamics and microphysics related to the Saharan Air Layer, African Easterly Waves and Jets, Tropical Easterly Jet, and deep convection in the ITCZ. 
+* <u>Instrument:<u> HALO (High Altitude Lidar Observatory)
 
 ![gifbug](assets/IMG/variables.gif)
 
