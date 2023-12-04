@@ -25,6 +25,9 @@ Location: St. Croix
 Mission Background: Airborne campaign to study dynamics and microphysics related to the Saharan Air Layer, African Easterly Waves and Jets, Tropical Easterly Jet, and deep convection in the ITCZ. 
 Instrument: HALO (High Altitude Lidar Observatory)
 
+![gifbug](assets/IMG/variables.gif)
+*Figure 2: Example of observables and products obtained from airborne lidar . [1].*
+
 ## Predictor Selection
 
 Since the current method of MLH prediction relies upon specific thresholds, the predictors included are selected mainly to weigh the sensitivity of thresholds.
@@ -43,10 +46,8 @@ Since the current method of MLH prediction relies upon specific thresholds, the 
 
 The quality-checked MLH data will serve as the observed dataset.
 
-<img src="https://raw.githubusercontent.com/julie-christopoulos/julie-christopoulos.github.io/assets/IMG/variables.gif" width="50%" alt="Alt Text">
 
 
-*Figure 1: Here is a caption for my diagram. This one shows a pengiun [1].*
 
 # Modelling
 
