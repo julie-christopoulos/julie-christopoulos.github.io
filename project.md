@@ -20,14 +20,15 @@ The lidar dataset is comprised of data from two field campaigns ACT-America and 
 * <u>Mission Background:<u> Airborne campaign to study the transport and fluxes of atmospheric carbon dioxide and methane
 * Instrument: HALO (High Altitude Lidar Observatory)
 
+![gifbug](assets/IMG/act-america.png)  
+
 **CPEX-AW 2021** (Convective Processes Experiment - Aerosols and Winds):
 * Location: St. Croix 
 * Mission Background: Airborne campaign to study dynamics and microphysics related to the Saharan Air Layer, African Easterly Waves and Jets, Tropical Easterly Jet, and deep convection in the ITCZ. 
 * Instrument: HALO (High Altitude Lidar Observatory)
 
-![gifbug](assets/IMG/variables.gif)
+![gifbug](assets/IMG/cpex_logo.png)  
 
-*Figure 1: Example of observables and products obtained from airborne lidar.*
 
 ## Predictor Selection
 
