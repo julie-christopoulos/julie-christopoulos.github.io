@@ -38,7 +38,7 @@ Since the current method of MLH prediction relies upon specific thresholds, the 
 | 2)  | MLH (Thresh = 0.0001)                                      |
 | 3)  | MLH (Thresh = 0.001)                                       |
 | 4)  | MLH (Thresh = 0.01)                                        |
-| 5-9)| Vertical Variance in 532nm Backscatter Gradient (360m above and below MLHs) |
+| 5-9)| Vertical Variance in 532nm Backscatter Gradient (360m above and below MLHs)|
 | 10-13) | Temporal Variance in MLHs associated with predictors 1-4  |
 | 14) | Solar Hour Angle                                           |
 | 15) | Terrain Flag (land = 0; water = 1)                         |
@@ -85,10 +85,10 @@ end
 
 ## Summary Statistics 
 
-
-
-
-
+| Method                | NMB   | NME   | MB     | ME    | RMSE   | CORR |
+|-----------------------|-------|-------|--------|-------|--------|------|
+| Default               | -0.04 | 0.19  | -41.31 | 193.21| 324.94 | 0.81 |
+| Ensemble Learning     | -0.01 | 0.09  | -14.14 | 92.94 | 157.39 | 0.96 |
 
 
 *Table 1: Summary of Ensemble and default model performance.*
@@ -110,15 +110,15 @@ To assess the performance of the ensemble learning model, predicted values were 
 
 ![gifbug](assets/IMG/20190710_bsc.png)
 
-*Figure 6: Summary of the residuals for the 5 test flights.*
+*Figure 6: Mixed layer heights for the ensemble learning and quality-checked methods for June 10, 2019 (ACT-America).*
 
 ![gifbug](assets/IMG/20210828_bsc.png)
 
-*Figure 7: Summary of the residuals for the 5 test flights.*
+*Figure 7: Mixed Layer heights for the ensemle learning and quality-chekced methods for August 28, 2021 (CPEX-AW).*
 
 # Discussion
 
-From Figure X, one can see that... [interpretation of Figure X].
+
 
 # Conclusion
 
@@ -126,7 +126,9 @@ Here is a brief summary. From this work, the following conclusions can be made:
 * first conclusion
 * second conclusion
 
-Here is how this work could be developed further in a future project.
+## Future Work
+Future work on this topic would benefit from incorporating additional lidar field campaign data (e.g., LISTOS, ACTIVATE, TRACER-AQ, CPEX-CV, CAMP2Ex), lidar observables (1064mm aerosol depolarization, relative humidity, water vapor mixing ratio, aerosol typing), and PBLHs derived from different methods (PBLH derived from dropsonde data).
+
 
 # References
 [1] DALL-E 3
