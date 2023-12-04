@@ -15,15 +15,15 @@ We did this to compute mixed layer heights for five flights within ACT-America a
 ## Background
 The dataset is comprised of data from two field campaigns ACT-America and CPEX-AW. 
 
-ACT-America (Atmospheric Carbon and Transport - America):
-Location: Eastern U.S. 
-Mission Background: Airborne campaign to study the transport and fluxes of atmospheric carbon dioxide and methane
-Instrument: HALO (High Altitude Lidar Observatory)
+**ACT-America 2019** (Atmospheric Carbon and Transport - America):
+*<u>Location:<u> Eastern U.S. 
+*<u>Mission Background:<u> Airborne campaign to study the transport and fluxes of atmospheric carbon dioxide and methane
+*<u>Instrument:<u> HALO (High Altitude Lidar Observatory)
 
-CPEX-AW (Convective Processes Experiment - Aerosols and Winds):
-Location: St. Croix 
-Mission Background: Airborne campaign to study dynamics and microphysics related to the Saharan Air Layer, African Easterly Waves and Jets, Tropical Easterly Jet, and deep convection in the ITCZ. 
-Instrument: HALO (High Altitude Lidar Observatory)
+**CPEX-AW 2021** (Convective Processes Experiment - Aerosols and Winds):
+*<u>Location:<u> St. Croix 
+*<u>Mission Background:<u> Airborne campaign to study dynamics and microphysics related to the Saharan Air Layer, African Easterly Waves and Jets, Tropical Easterly Jet, and deep convection in the ITCZ. 
+*<u>Instrument:<u> HALO (High Altitude Lidar Observatory)
 
 ![gifbug](assets/IMG/variables.gif)
 
@@ -99,22 +99,22 @@ To assess the performance of the ensemble learning model, predicted values were 
 
 ![gifbug](assets/IMG/scatter.png)
 
-*Figure 4: Summary of the observed vs. predicted values for 5 test flights. .*
+*Figure 4: Summary of the observed vs. predicted values for 5 test flights.*
 
 ![gifbug](assets/IMG/residuals.png)
 
-*Figure 5: Summary of the residuals for the 5 test flights.*
+*Figure 5: Summary of the residuals for 5 test flights.*
 
 
 ## Test Flight Results
 
 ![gifbug](assets/IMG/20190710_bsc.png)
 
-*Figure 6: Mixed layer heights for the ensemble learning and quality-checked methods for June 10, 2019 (ACT-America).*
+*Figure 6: Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for June 10, 2019 (ACT-America).*
 
 ![gifbug](assets/IMG/20210828_bsc.png)
 
-*Figure 7: Mixed Layer heights for the ensemle learning and quality-chekced methods for August 28, 2021 (CPEX-AW).*
+*Figure 7: Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for August 28, 2021 (CPEX-AW).*
 
 # Discussion
 
