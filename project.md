@@ -134,9 +134,11 @@ To assess the performance of the ensemble learning model, predicted values were 
 
 *Figure 5: Summary of the residuals for 5 test flights.*
 
-The plots in Fig. 4 and Fig 5. illustrate the performance of the predictions agains the observations (quality-checked MLHs)
+The plots in Fig. 4 and Fig 5. illustrate the performance of the predictions agains the observations (quality-checked MLHs). Fig. 5 illustrates a much closer relationship to the one-to-one line compared to the default method. However, it is clear there is still some room for improvement. The ensemble learning method has a tendency to underpredict deeper MLHs (> 1500m) and overpredict MLHs around 1000m. This is evident in the residuals (Fig 5.) as well. Overall, there is much greater improvement to the default method without the need of manual inspection. 
 
 ## Test Flight Results
+
+Below are backscatter curtain plots illustrated the modeled (magenta) vs. quality-checked MLHs for two flights in the test dataset. This figures illustrate the model's capability of capturing a MLH that is representative of the archived, quality-checked values. 
 
 ### 20190710 ACT-America Test Flight 
 
@@ -148,6 +150,7 @@ The plots in Fig. 4 and Fig 5. illustrate the performance of the predictions aga
 |---------------------|-------|-------|---------|--------|--------|------|
 | Ensemble Learning   | -0.02 | 0.04  | -30.27  | 69.42  | 92.69  | 0.94 |
 
+*Table 3: Ensemble model performance for a flight on June 10, 2019.*
 
 ### 20210828 CPEX-AW Test Flight 
 ![gifbug](assets/IMG/20210828_bsc.png)
@@ -158,15 +161,12 @@ The plots in Fig. 4 and Fig 5. illustrate the performance of the predictions aga
 |-------------------|-------|-------|-------|-------|--------|------|
 | Ensemble Learning | 0.02  | 0.06  | 12.07 | 34.92 | 58.42  | 0.89 |
 
-# Discussion
-
-
+*Table 3: Ensemble model performance for a flight on August 28, 2021.*
 
 # Conclusion
 
-Here is a brief summary. From this work, the following conclusions can be made:
-* first conclusion
-* second conclusion
+A supervised machine learning approach was taken to help automize MLH prediction in an attempt to produce results similar to those of the quality-checked MLHs. Leveraging observables from the High Altitude Lidar Observatory (HALO) and datasets from two airborne field campaigns (ACT-America (2019) and CPEX-AW (2021), I was able to produce automized MLHs for 5 test flights. The results revealed the following: **1) comparable MLHs to the quality-checked observables (Figures 6,7) and 2) improved estimates from the default MLH method are possible with the inclusion of an ensemble learning method (Table 2)**. However, it is still evident 
+
 
 ## Future Work
 Future work on this topic would benefit from incorporating additional lidar field campaign data (e.g., LISTOS, ACTIVATE, TRACER-AQ, CPEX-CV, CAMP2Ex), lidar observables (1064mm aerosol depolarization, relative humidity, water vapor mixing ratio, aerosol typing), and PBLHs derived from different methods (PBLH derived from dropsonde data).
