@@ -6,19 +6,19 @@
 
 # Introduction 
 
-The planetary boundary (PBL) is the lowest, turbulent layer of the atmosphere and serves to facilitate a multitude of feedbacks in the atmosphere, including those between the atmosphere, ocean, and land. The height of the boundary layer (PBLH) is responsible for governing many tropospheric activities, such as aerosol distributions, convection, and cloud formation [7]. Its complex evolution challenges observations of the PBL. NASA Langley (LaRC) hosts a suite of airborne lidar High Spectral Resolution Lidars (HSRL) and differential absorption lidars (DIAL) whose observables of aerosol properties (532nm backscatter) aid in identifying the PBLH. 
+The planetary boundary (PBL) is the lowest, turbulent layer of the atmosphere and serves to facilitate a multitude of feedbacks in the atmosphere, including those between the atmosphere, ocean, and land. The height of the boundary layer (PBLH) is responsible for governing many tropospheric activities, such as aerosol distributions, convection, and cloud formation [1]. Its complex evolution challenges observations of the PBL. NASA Langley (LaRC) hosts a suite of airborne lidar High Spectral Resolution Lidars (HSRL) and differential absorption lidars (DIAL) whose observables of aerosol properties (532nm backscatter) aid in identifying the PBLH. 
 
-This project aims to improve mixed layer height (MLH) estimates derived from airborne HSRLs to allow for more automated retrievals over a wide range of atmospheric and surface conditions. Currently, the LaRC airborne lidar algorithm utilizes the Haar wavelet covariance transform method [3] to derive MLHs. Essentially, a Haar wavelet function is used to transform a lidar backscatter profile. The lowest altitude minimum of the transform is determined as the height of the boundary layer. The algorithm’s implementation on HSRL datasets is mostly automized, although it requires manual inputs of threshold values for WCT peak detection. In addition, a final manual quality control phase is necessary to correct remaining outliers by utilizing other observations or based on intuitive situations [9]. It is thus evident, further research is needed to create a more robust, accurate, and automated MLH algorithm that can produce reliable MLHs without user input. 
+This project aims to improve mixed layer height (MLH) estimates derived from airborne HSRLs to allow for more automated retrievals over a wide range of atmospheric and surface conditions. Currently, the LaRC airborne lidar algorithm utilizes the Haar wavelet covariance transform method [2] to derive MLHs. Essentially, a Haar wavelet function is used to transform a lidar backscatter profile. The lowest altitude minimum of the transform is determined as the height of the boundary layer. The algorithm’s implementation on HSRL datasets is mostly automized, although it requires manual inputs of threshold values for WCT peak detection. In addition, a final manual quality control phase is necessary to correct remaining outliers by utilizing other observations or based on intuitive situations [3]. It is thus evident, further research is needed to create a more robust, accurate, and automated MLH algorithm that can produce reliable MLHs without user input. 
 
 To address this, a supervised machine learning approach is taken using the ensemble learning method. Two lidar field campaigns are selected (CPEX-AW (2021), ACT-America (2019) to predict MLHs for several test flights. The resulting predictions are evaluated against the quality checked MLHs and the default method (using a single WCT threshold) to assess improvement. Overall, increased model performance with the inclusion of ensemble learning was observed compared to the default method of prediction, illustrating the advantages of automizing MLH predictions. Further work is needed to increase prediction accuracy and assess more complex lidar scenes. 
 
-
+**Note: A mixed layer height (MLH) is one way to characterize the boundary layer.
 
 # Data
 
 ## Background
 
-This project utilizes field campaign datasets obtained from the LaRC High Altitude Observatory Instrument (HALO) which employs the HSRL and DIAL techniques to provide profiles of aerosols and water vapor. Data is taken from two NASA field campaigns, ACT-America and CPEX-AW. 
+This project utilizes field campaign datasets obtained from the LaRC High Altitude Observatory Instrument (HALO) which employs the HSRL and DIAL techniques to provide profiles of aerosols and water vapor. Data is taken from two airborne lidar NASA field campaigns, ACT-America (2019) and CPEX-AW (2021). These two campaigns are choses because they are representative marine- (CPEX-AW) and terrestrial-type (ACT-America) boundary layers. 
 
 **ACT-America 2019** (Atmospheric Carbon and Transport - America):
 * <u>Location:<u> Eastern U.S. 
@@ -32,8 +32,7 @@ This project utilizes field campaign datasets obtained from the LaRC High Altitu
 
 ## Predictor Selection
 
-Tablle 1. illustrates the predictors selected for the ensemble learning algorithm. The first four predictions represent various MLHs derived using constant thresholds, ranging from 0.00001-0.01. These thresholds fall in the range of the typical thresholds selected in the current MLH algorithm, and are used to test the sensisity of particular threshold values. Predictors 5-9 are associated with these four height predictors. The variance of the 532nm aerosol backscatter gradient is computed 360m above and below the MLHs associated with the first four predictors. Predictors 10-13 are also associated with the first four height predictors. These predicors were computed to be the horizontal variance in MLHs. A temporal variance is taken 10 time steps before and after each of the derived heights (data is available every 10s). Next, the solar hour angle is computed from the geographic variables (i.e. latitude, longitude). This was selected as a predictor since the majority of the ACT-America dataset was collected during solar noon. Lastly, I computed a terrain flag based on the geographical coordinates of the observations. The terrain flag is incorporated since the dataset incoporates both marine- and terrestrial-type MLHs. 
-
+Table 1. illustrates the predictors selected for the ensemble learning algorithm. The first four predictions represent various MLHs derived using the WCT method and constant thresholds, ranging from 0.00001-0.01. These thresholds fall within the range of the typical thresholds selected in the current MLH algorithm and are used to test the sensitivity of particular threshold values. Predictors 5-9 are associated with these four height predictors. The variance of the 532nm aerosol backscatter gradient is computed 360m above and below the MLHs associated with the first four predictors. Predictors 10-13 are also associated with the first four height predictors. These predictors were computed to be the horizontal variance in MLHs. A temporal variance is taken 10-time steps before and after each of the derived heights (data is available every 10s). Next, the solar hour angle is computed from the geographic variables (i.e. latitude, longitude). This was selected as a predictor since the majority of the ACT-America dataset was collected during solar noon. Lastly, I computed a terrain flag based on the geographical coordinates of the observations. The terrain flag is incorporated to help the algorithm identify marine- and terrestrial-type MLHs. 
 
 | No. | Description                                                 |
 | --- | ----------------------------------------------------------- |
@@ -50,8 +49,7 @@ Tablle 1. illustrates the predictors selected for the ensemble learning algorith
 
 ## Reference Data
 
-The reference data for the ensemble learning algorithm is comprised of the quality-checked/manually adjusted MLHs. An example of what these MLHs look like for a flight is shown in Fig. 1. 
-
+The reference data for the ensemble learning algorithm is comprised of the quality-checked/manually adjusted MLHs. This dataset will be used as the "truth" or the "observed" values to evaluate the machine learning results. An example of what these MLHs look like for a flight is shown in Fig. 1. 
 
 ![gifbug](assets/IMG/20190724_F1_MLH.png)
 
@@ -59,8 +57,7 @@ The reference data for the ensemble learning algorithm is comprised of the quali
 
 # Modelling
 
-
-Before implementing the ensemble model, all of the data within the training and testing datasets was standardized using the minimums and maximums (see code snippet below). The testing dataset was stadardized with the mins and maxs from the training set to elimate the possibility of bias. 
+Before implementing the ensemble model, all of the data within the training and testing datasets was standardized using the minimums and maximums (see code snippet below) of each respective predictor in the traning dataset. The testing dataset was standardized with the minimums and maximums from the training set to eliminate the possibility of bias. 
 
 ## Data Standardization
 
@@ -79,8 +76,10 @@ std_values_tr = cellfun(@(x, min_val, max_val) standardizeData(x, min_val, max_v
 [sp1_tr, sp2_tr, sp3_tr, sp4_tr,svvar_p1_tr, svvar_p2_tr, svvar_p3_tr, svvar_p4_tr,shvar_p1_tr, shvar_p2_tr, shvar_p3_tr, shvvar_p4_tr,shangle_tr,sflag_tr] = std_values_tr{:};
 [sarch_tr] = standardizeData(arch_tr,min_arch,max_arch);
 ```
+A **supervised learning** learning approach was implemented to predict altitudes of mixed layer heights (in meters) for multiple flights within the ACT-America and CPEX-CV field campaigns. 23 flights were randomized and split into training (19 flights) and testing (5 flights). A regression ensemble approach (random forest) was implemented to model the height values. This was the chosen algorithm for several reasons. The availability of lidar data is dependent on clear-sky conditions. Much of the backscatter data is cloud screened, as a result, large sections of data can be missing for certain research flights. The ensemble learning algorithm is known for handling missing data well and leveraging other available predictors when one might be missing. In addition, it is known for handling complex nonlinear relationships and being able to handle a large number of features without overfitting. These attributes make this model suitable for solving the mixed layer height atomization problem. 
 
-A **supervised learning** learning approach was implemented to predict altitudes of mixed layer heights (in meters) for multiple flights within the ACT-America and CPEX-CV field campaigns. 23 flights were randomized and split into training (19 flights) and testing (5 flights). A regression ensemble approach was implemented to model the height values. Bootstrap aggregating (bagging) was selected to help reduce overfitting and the impact of outliers within the training data. Additionally, I opted to enable the surrogate decision splits. I opted for this method since a number of the predictros contained missing data. This way if a predictor was missing for a particular observation, a decision could be made based on other available predictors. Lastly, for each tree in the ensemble, the MaxNumSplits was set to 200 in order to restrict the tree depth and control its complexity. After several test cases, I found this value performs well. 
+Bootstrap aggregation (bagging) was selected to aid in reducing overfitting and the impact of outliers within the training dataset. Additionally, I opted to enable the surrogate decision splits. I opted for this method since a several of the predictors contained missing data. This way if a predictor was missing for a particular observation, a decision could be made based on other available predictors. Lastly, for each tree in the ensemble, the MaxNumSplits was set to 200 to restrict the tree depth and control its complexity. After several test cases, I found this value performs well. 
+
 
 ## Implementation
 ```matlab
@@ -109,7 +108,7 @@ end
 
 *Figure 2: Predictor importance for ensemble learning method.*
 
-The predictor importance plot illustrates the relevance of the predictors in determining the MLH estimates. Unsuprisingly, the height predictors hold the highest importance since they describe the mixed layer well. The solar hour angle and the terrain flag were the next variables to stand out. The solar hour angle value suggests the importance of the diurnal cycle for determining boundary layer development while the significant importance of the terrain flag offers the distinction between marine- (CPEX-AW) and terrestrial-type (ACT-America) MLHs. 
+The predictor importance plot illustrates the relevance of the predictors in determining the MLH estimates. Unsurprisingly, the height predictors hold the highest importance since they describe the mixed layer well. The solar hour angle and the terrain flag were the next variables to stand out. The solar hour angle value suggests the importance of the diurnal cycle for determining boundary layer development while the significant importance of the terrain flag offers the distinction between marine- (CPEX-AW) and terrestrial-type (ACT-America) MLHs. 
 
 ## Summary Statistics 
 
@@ -120,7 +119,7 @@ The predictor importance plot illustrates the relevance of the predictors in det
 
 *Table 2: Summary of Ensemble and default model performance.*
 
-To assess the performance of the ensemble learning model, predicted values were evalated against the quality-checked MLHs (observed values). In addition, the performance of the default method was assessed for comparison. The statstics in table 2. are representative of the results for all the test flights. **The ensemble learning method is representative of well correlated predictions (>0.9), in addition to reduced NMB, NME, MB, ME, and RMSE compared to the default method.** Such results highlight the advantages of an automized algorithm : results that are close to the observed without the need of manual inspection. 
+To assess the performance of the ensemble learning model, predicted values were evaluated against the quality checked MLHs (observed values). In addition, the performance of the default method was assessed for comparison. The statistics in Table 2. are representative of the results for all the test flights. **The ensemble learning method is representative of well correlated predictions (>0.9), in addition to reduced NMB, NME, MB, ME, and RMSE compared to the default method. ** Such results highlight the advantages of an automized algorithm: results that are close to the observed without the need of manual inspection. 
 
 **For context, the default method is simply a MLH produced using a threshold of 0.0001. The algorithm is typically run with this value before the values are quality-checked and manually adjusted. 
 
@@ -134,11 +133,14 @@ To assess the performance of the ensemble learning model, predicted values were 
 
 *Figure 4: Summary of the residuals for 5 test flights.*
 
-The plots in Fig. 4 and Fig 5. illustrate the performance of the predictions agains the observations (quality-checked MLHs). Fig. 5 illustrates a much closer relationship to the one-to-one line compared to the default method. However, it is clear there is still some room for improvement. The ensemble learning method has a tendency to underpredict deeper MLHs (> 1500m) and overpredict MLHs around 1000m. This is evident in the residuals (Fig 5.) as well. Overall, there is much greater improvement to the default method without the need of manual inspection. 
+The plots in Fig. 4 and Fig 5. illustrate the performance of the predictions against the observations (quality checked MLHs). Fig. 5 illustrates a much closer relationship to the one-to-one line compared to the default method. However, it is clear there is still some room for improvement. The ensemble learning method tends to underpredict deeper MLHs (> 1500m) and overpredict MLHs around 1000m. This is evident in the residuals (Fig 5.) as well. Overall, there is much greater improvement to the default method without the need of manual inspection. 
 
 ## Test Flight Results
 
-Below are backscatter curtain plots illustrated the modeled (magenta) vs. quality-checked MLHs for two flights in the test dataset. This figures illustrate the model's capability of capturing a MLH that is representative of the archived, quality-checked values. 
+Below are backscatter curtain plots illustrating the modeled (magenta) and quality checked MLHs for two flights in the test dataset. Figures 5 and 6 are representative of terrestrial- and marine-based boundary layers respectively. As shown, terrestrial boundary layers experience more turbulent mixing (varied backscatter gradients shown) while marine boundary layers contain high aerosol loading and less turbulent mixing (as shown).
+
+These figures illustrate the model's capability of capturing a MLH that is representative of the archived, quality-checked values. In these cases, correlations were significant (>0.9) and erros/biases were relatively low compared to the observed values depicted.
+
 
 ### 20190710 ACT-America Test Flight 
 
@@ -165,17 +167,32 @@ Below are backscatter curtain plots illustrated the modeled (magenta) vs. qualit
 
 # Conclusion
 
-Robust, accurate estimates of MLHs are crucial in understanding processes within the troposphere. The current method of MLH prediction is far from automized. This project aimed to move away from this time-consuming process by utilzing the automization potential of machine learning.A supervised machine learning approach was taken to help automize MLH prediction in an attempt to produce results similar to those of the quality-checked MLHs. Leveraging observables from the High Altitude Lidar Observatory (HALO) and datasets from two airborne field campaigns (ACT-America (2019) and CPEX-AW (2021), I was able to produce automized MLHs for 5 test flights. 
+Robust, accurate estimates of MLHs are crucial in understanding processes within the troposphere. The current method of MLH prediction is far from automized. This project aimed to move away from this time-consuming process by utilizing the atomization potential of machine learning. A supervised machine learning approach was taken to help automize MLH prediction in an attempt to produce results similar to those of the quality-checked MLHs. Leveraging observables from the High-Altitude Lidar Observatory (HALO) and datasets from two airborne field campaigns (ACT-America (2019) and CPEX-AW (2021), I was able to produce automized MLHs for 5 test flights. 
 
-The results revealed the following: **1) comparable MLHs to the quality-checked observables (Figures 5,6) and 2) improved estimates from the default MLH method are possible with the inclusion of an ensemble learning method (Table 2)**. However, it is clear there is room for improvement.  Figures 4 and 5 illustrate the tendency of the ensemble learning model to underpredict larger MLH values (> 2000m) and overpredict values ~1000m as evidenced by the large errors that are still present in Table 2. It is thus necessary further work in this topic is needed to make such improvements. 
+The results revealed the following: **1) comparable MLHs to the quality-checked observables (Figures 5,6) and 2) improved estimates from the default MLH method are possible with the inclusion of an ensemble learning method (Table 2) **. However, it is clear there is room for improvement.  Figures 4 and 5 illustrate the tendency of the ensemble learning model to underpredict larger MLH values (> 2000m) and overpredict values ~1000m as evidenced by the large errors that are still present in Table 2. It is thus necessary further work in this topic is needed to make such improvements (see next section). 
 
+Overall, improved predictions of aerosol mixed layer heights will enhance chemical models (WRF-Chem) and deepen our understanding of PBL-air quality interactions.
 
 ## Future Work
 
-To further improve the ensemble learning algorithm, additional data can be utilized to provide more context for the algorithm. Field campaigns such as 2020-2022 ACTIVATE, CAMP2Ex, TRACER-AQ, LISTOS, TRACER-AQ, and CPEX-CV could be incorporated into such an algorithm. In addition, more lidar variables and independent data can be utilized. For example, observables such as 1064nm aerosol depolarization, relative humidity, and mixing ratio gradients can be used as predictiors to characterize the height of the boundary layer. For many of the marine-based field campaigns, dropsondes were launched during many of the research flights providing vertical profiles of the atmosphere. PBLHs derived from those measurements could provide an additional independent dataset to evaluate the ensemble learning algorithm. The incorporation of these variables and independent data could prove useful in correcting the algorithm further. 
-
+To further improve the ensemble learning algorithm, additional data can be utilized to provide more context for the algorithm. Field campaigns such as 2020-2022 ACTIVATE, CAMP2Ex, TRACER-AQ, LISTOS, TRACER-AQ, and CPEX-CV could be incorporated into such an algorithm. In addition, more lidar variables and independent data can be utilized. For example, observables such as 1064nm aerosol depolarization, relative humidity, and mixing ratio gradients can be used as predictors to characterize the height of the boundary layer. For many of the marine-based field campaigns, dropsondes were launched during many of the research flights providing vertical profiles of the atmosphere. PBLHs derived from those measurements could provide an additional independent dataset to evaluate the ensemble learning algorithm. The incorporation of these variables and independent data could prove useful in correcting the algorithm further. 
 
 # References
+
+[1] Liu, S., & Liang, X. Observed Diurnal Cycle Climatology of Planetary Boundary Layer
+Height. Journal of Climate, 23(21), 5790-5809 (2010).
+
+[2] Burton, S. P., Ferrare, R. A., Hostetler, C. A., Hair, J. W., Rogers, R. R., Obland, M. D.,
+Butler, C. F., Cook, A. L., Harper, D. B., and Froyd, K. D.: Aerosol classification using
+airborne High Spectral Resolution Lidar measurements – methodology and examples.
+Atmos. Meas. Tech., 5, 73–98 (2012).
+
+[3] Scarino, A. J., Obland, M. D., Fast, J. D., Burton, S. P., Ferrare, R. A., Hostetler, C. A.,
+Berg, L. K., Lefer, B., Haman, C., Hair, J. W., Rogers, R. R., Butler, C., Cook, A. L., and
+Harper, D. B.: Comparison of mixed layer heights from airborne high spectral resolution
+lidar, ground-based measurements, and the WRF-Chem model during CalNex and
+CARES, Atmos. Chem. Phys., 14, 5547–5560 (2014).
+
 
 
 [back](./)
