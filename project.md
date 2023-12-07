@@ -128,11 +128,11 @@ To assess the performance of the ensemble learning model, predicted values were 
 
 ![gifbug](assets/IMG/scatter.png)
 
-*Figure 4: Summary of the observed vs. predicted values for 5 test flights.*
+*Figure 3: Summary of the observed vs. predicted values for 5 test flights.*
 
 ![gifbug](assets/IMG/residuals.png)
 
-*Figure 5: Summary of the residuals for 5 test flights.*
+*Figure 4: Summary of the residuals for 5 test flights.*
 
 The plots in Fig. 4 and Fig 5. illustrate the performance of the predictions agains the observations (quality-checked MLHs). Fig. 5 illustrates a much closer relationship to the one-to-one line compared to the default method. However, it is clear there is still some room for improvement. The ensemble learning method has a tendency to underpredict deeper MLHs (> 1500m) and overpredict MLHs around 1000m. This is evident in the residuals (Fig 5.) as well. Overall, there is much greater improvement to the default method without the need of manual inspection. 
 
@@ -144,7 +144,7 @@ Below are backscatter curtain plots illustrated the modeled (magenta) vs. qualit
 
 ![gifbug](assets/IMG/20190710_bsc.png)
 
-*Figure 6: Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for June 10, 2019 (ACT-America).*
+*Figure 5: Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for June 10, 2019 (ACT-America).*
 
 | Method              | NMB   | NME   | MB      | ME     | RMSE   | CORR |
 |---------------------|-------|-------|---------|--------|--------|------|
@@ -155,7 +155,7 @@ Below are backscatter curtain plots illustrated the modeled (magenta) vs. qualit
 ### 20210828 CPEX-AW Test Flight 
 ![gifbug](assets/IMG/20210828_bsc.png)
 
-*Figure 7: Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for August 28, 2021 (CPEX-AW).*
+*Figure 6: Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for August 28, 2021 (CPEX-AW).*
 
 | Method            | NMB   | NME   | MB    | ME    | RMSE   | CORR |
 |-------------------|-------|-------|-------|-------|--------|------|
@@ -165,15 +165,18 @@ Below are backscatter curtain plots illustrated the modeled (magenta) vs. qualit
 
 # Conclusion
 
-A supervised machine learning approach was taken to help automize MLH prediction in an attempt to produce results similar to those of the quality-checked MLHs. Leveraging observables from the High Altitude Lidar Observatory (HALO) and datasets from two airborne field campaigns (ACT-America (2019) and CPEX-AW (2021), I was able to produce automized MLHs for 5 test flights. The results revealed the following: **1) comparable MLHs to the quality-checked observables (Figures 6,7) and 2) improved estimates from the default MLH method are possible with the inclusion of an ensemble learning method (Table 2)**. However, it is still evident 
+Robust, accurate estimates of MLHs are crucial in understanding processes within the troposphere. The current method of MLH prediction is far from automized. This project aimed to move away from this time-consuming process by utilzing the automization potential of machine learning.A supervised machine learning approach was taken to help automize MLH prediction in an attempt to produce results similar to those of the quality-checked MLHs. Leveraging observables from the High Altitude Lidar Observatory (HALO) and datasets from two airborne field campaigns (ACT-America (2019) and CPEX-AW (2021), I was able to produce automized MLHs for 5 test flights. 
+
+The results revealed the following: **1) comparable MLHs to the quality-checked observables (Figures 5,6) and 2) improved estimates from the default MLH method are possible with the inclusion of an ensemble learning method (Table 2)**. However, it is clear there is room for improvement.  Figures 4 and 5 illustrate the tendency of the ensemble learning model to underpredict larger MLH values (> 2000m) and overpredict values ~1000m as evidenced by the large errors that are still present in Table 2. It is thus necessary further work in this topic is needed to make such improvements. 
 
 
 ## Future Work
-Future work on this topic would benefit from incorporating additional lidar field campaign data (e.g., LISTOS, ACTIVATE, TRACER-AQ, CPEX-CV, CAMP2Ex), lidar observables (1064mm aerosol depolarization, relative humidity, water vapor mixing ratio, aerosol typing), and PBLHs derived from different methods (PBLH derived from dropsonde data).
+
+To further improve the ensemble learning algorithm, additional data can be utilized to provide more context for the algorithm. Field campaigns such as 2020-2022 ACTIVATE, CAMP2Ex, TRACER-AQ, LISTOS, TRACER-AQ, and CPEX-CV could be incorporated into such an algorithm. In addition, more lidar variables and independent data can be utilized. For example, observables such as 1064nm aerosol depolarization, relative humidity, and mixing ratio gradients can be used as predictiors to characterize the height of the boundary layer. For many of the marine-based field campaigns, dropsondes were launched during many of the research flights providing vertical profiles of the atmosphere. PBLHs derived from those measurements could provide an additional independent dataset to evaluate the ensemble learning algorithm. The incorporation of these variables and independent data could prove useful in correcting the algorithm further. 
 
 
 # References
-[1] DALL-E 3
+
 
 [back](./)
 
