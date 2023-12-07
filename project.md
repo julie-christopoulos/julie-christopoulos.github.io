@@ -109,6 +109,8 @@ end
 
 *Figure 2: Predictor importance for ensemble learning method.*
 
+The predictor importance plot illustrates the relevance of the predictors in determining the MLH estimates. Unsuprisingly, the height predictors hold the highest importance since they describe the mixed layer well. The solar hour angle and the terrain flag were the next variables to stand out. The solar hour angle value suggests the importance of the diurnal cycle for determining boundary layer development while the significant importance of the terrain flag offers the distinction between marine- (CPEX-AW) and terrestrial-type (ACT-America) MLHs. 
+
 ## Summary Statistics 
 
 | Method                | NMB   | NME   | MB     | ME    | RMSE   | CORR |
@@ -118,7 +120,9 @@ end
 
 *Table 2: Summary of Ensemble and default model performance.*
 
-To assess the performance of the ensemble learning model, predicted values were evalated against the quality-checked MLHs (observed values). In addition, the performance of the default method was assessed for comparison. 
+To assess the performance of the ensemble learning model, predicted values were evalated against the quality-checked MLHs (observed values). In addition, the performance of the default method was assessed for comparison. The statstics in table 2. are representative of the results for all the test flights. **The ensemble learning method is representative of well correlated predictions (>0.9), in addition to reduced NMB, NME, MB, ME, and RMSE compared to the default method.** Such results highlight the advantages of an automized algorithm : results that are close to the observed without the need of manual inspection. 
+
+**For context, the default method is simply a MLH produced using a threshold of 0.0001. The algorithm is typically run with this value before the values are quality-checked and manually adjusted. 
 
 ## Summary Plots
 
@@ -130,6 +134,7 @@ To assess the performance of the ensemble learning model, predicted values were 
 
 *Figure 5: Summary of the residuals for 5 test flights.*
 
+The plots in Fig. 4 and Fig 5. illustrate the performance of the predictions agains the observations (quality-checked MLHs)
 
 ## Test Flight Results
 
