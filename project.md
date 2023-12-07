@@ -80,7 +80,7 @@ std_values_tr = cellfun(@(x, min_val, max_val) standardizeData(x, min_val, max_v
 [sarch_tr] = standardizeData(arch_tr,min_arch,max_arch);
 ```
 
-A **supervised learning** learning approach was implemented to predict altitudes of mixed layer heights (in meters) for multiple flights within the ACT-America and CPEX-CV field campaigns. 23 flights were randomized and split into training (19 flights) and testing (5 flights). A regression ensemble approach was implemented to model the height values. Bootstrap aggregating (bagging) was selected to help reduce overfitting and the impact of outliers within the training data. 
+A **supervised learning** learning approach was implemented to predict altitudes of mixed layer heights (in meters) for multiple flights within the ACT-America and CPEX-CV field campaigns. 23 flights were randomized and split into training (19 flights) and testing (5 flights). A regression ensemble approach was implemented to model the height values. Bootstrap aggregating (bagging) was selected to help reduce overfitting and the impact of outliers within the training data. Additionally, I opted to enable the surrogate decision splits. I opted for this method since a number of the predictros contained missing data. This way if a predictor was missing for a particular observation, a decision could be made based on other available predictors. Lastly, for each tree in the ensemble, the MaxNumSplits was set to 200 in order to restrict the tree depth and control its complexity. After several test cases, I found this value performs well. 
 
 ## Implementation
 ```matlab
