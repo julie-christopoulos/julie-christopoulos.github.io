@@ -6,14 +6,19 @@
 
 # Introduction 
 
-The planetary boundary layer height (PBLH) influences various troposheric processes including aerosol distributions, convection, and cloud formation. However, its complex evolution challenges observations in the PBL. Currently, NASA Langely employs airborne High Spectral resolution lidars (HSRL) and Differential Absorption Lidars (DIAL) to obtain vertical profiles of various atmospheric constituents at high spatial and temporal evolutions. These observables play a crucial role in the derivation of the aerosol mixed layer height (e.g. one method to desribe the PBLH; the height by which aerosols are well dispersed). Currently, MLHs are derived using an algorithm based on the Haar wavelet covariance transform method (WCT), which relies upon manually-adjusted threshold values for accurate MLH estimates. In addition, the estimations require a time-consuming quality-inspection process to correct remaining outliers. 
+The planetary boundary (PBL) is the lowest, turbulent layer of the atmosphere and serves to facilitate a multitude of feedbacks in the atmosphere, including those between the atmosphere, ocean, and land. The height of the boundary layer (PBLH) is responsible for governing many tropospheric activities, such as aerosol distributions, convection, and cloud formation [7]. Its complex evolution challenges observations of the PBL. NASA Langley (LaRC) hosts a suite of airborne lidar High Spectral Resolution Lidars (HSRL) and differential absorption lidars (DIAL) whose observables of aerosol properties (532nm backscatter) aid in identifying the PBLH. 
 
-To create an automized algorithm, this project utilized datasets from two airborne lidar field campaigns (CPEX-AW (2021) and ACT-America (2019)) as inputs to a supervised machine learning algorithm. A regression-based algorithm was selected (i.e. the ensemble learning model). This model was used to compute automized MLHsfor five flights within ACT-America and CPEX-AW. Overall, increased model performance compared to the default method with the inclusion of ensemble learning methods, illustrating an advantage for automizing mixed layer height prediction. Further work is needed to address more complex scenes and environments increased prediction accuracy. 
+This project aims to improve mixed layer height (MLH) estimates derived from airborne HSRLs to allow for more automated retrievals over a wide range of atmospheric and surface conditions. Currently, the LaRC airborne lidar algorithm utilizes the Haar wavelet covariance transform method [3] to derive MLHs. Essentially, a Haar wavelet function is used to transform a lidar backscatter profile. The lowest altitude minimum of the transform is determined as the height of the boundary layer. The algorithm’s implementation on HSRL datasets is mostly automized, although it requires manual inputs of threshold values for WCT peak detection. In addition, a final manual quality control phase is necessary to correct remaining outliers by utilizing other observations or based on intuitive situations [9]. It is thus evident, further research is needed to create a more robust, accurate, and automated MLH algorithm that can produce reliable MLHs without user input. 
+
+To address this, a supervised machine learning approach is taken using the ensemble learning method. Two lidar field campaigns are selected (CPEX-AW (2021), ACT-America (2019) to predict MLHs for several test flights. The resulting predictions are evaluated against the quality checked MLHs and the default method (using a single WCT threshold) to assess improvement. Overall, increased model performance with the inclusion of ensemble learning was observed compared to the default method of prediction, illustrating the advantages of automizing MLH predictions. Further work is needed to increase prediction accuracy and assess more complex lidar scenes. 
+
+
 
 # Data
 
 ## Background
-The lidar dataset is comprised of data from two field campaigns ACT-America and CPEX-AW. 
+
+This project utilizes field campaign datasets obtained from the LaRC High Altitude Observatory Instrument (HALO) which employs the HSRL and DIAL techniques to provide profiles of aerosols and water vapor. Data is taken from two NASA field campaigns, ACT-America and CPEX-AW. 
 
 **ACT-America 2019** (Atmospheric Carbon and Transport - America):
 * <u>Location:<u> Eastern U.S. 
@@ -27,7 +32,9 @@ The lidar dataset is comprised of data from two field campaigns ACT-America and 
 
 ## Predictor Selection
 
-Since the current method of MLH prediction relies upon specific thresholds, the predictors included are selected mainly to weigh the sensitivity of thresholds.
+Tablle 1. illustrates the predictors selected for the ensemble learning algorithm. The first four predictions represent various MLHs derived using constant thresholds, ranging from 0.00001-0.01. These thresholds fall in the range of the typical thresholds selected in the current MLH algorithm, and are used to test the sensisity of particular threshold values. Predictors 5-9 are associated with these four height predictors. The variance of the 532nm aerosol backscatter gradient is computed 360m above and below the MLHs associated with the first four predictors. Predictors 10-13 are also associated with the first four height predictors. These predicors were computed to be the horizontal variance in MLHs. A temporal variance is taken 10 time steps before and after each of the derived heights (data is available every 10s). Next, the solar hour angle is computed from the geographic variables (i.e. latitude, longitude). This was selected as a predictor since the majority of the ACT-America dataset was collected during solar noon. Lastly, I computed a terrain flag based on the geographical coordinates of the observations. The terrain flag is incorporated since the dataset incoporates both marine- and terrestrial-type MLHs. 
+
+
 | No. | Description                                                 |
 | --- | ----------------------------------------------------------- |
 | 1)  | MLH (Thresh = 0.00001)                                     |
@@ -39,17 +46,41 @@ Since the current method of MLH prediction relies upon specific thresholds, the 
 | 14) | Solar Hour Angle                                           |
 | 15) | Terrain Flag (land = 0; water = 1)                         |
 
+*Table 1: Predictors incorporated in the ensemble learning MLH algorithm.*
+
 ## Reference Data
 
-The quality-checked, MLHs serve as the refernce data for the training and testing data. Thresholds were adjusted manually and by eye to capture the correct aerosol gradient. 
+The reference data for the ensemble learning algorithm is comprised of the quality-checked/manually adjusted MLHs. An example of what these MLHs look like for a flight is shown in Fig. 1. 
+
 
 ![gifbug](assets/IMG/20190724_F1_MLH.png)
 
-*Figure 2: Quality-Checked MLHs shown for a flight on June 24, 2019 during the ACT-America campaign.*
+*Figure 1: Quality-Checked MLHs shown for a flight on June 24, 2019 during the ACT-America campaign.*
 
 # Modelling
 
-A **supervised learning** approach was implemented to predict altitudes of mixed layer heights (in meters) for multiple flights within the ACT-America and CPEX-CV field campaigns. 23 flights were randomized and split into training (19 flights) and testing (5 flights). A regression ensemble approach was implemented to model the heights. 
+
+Before implementing the ensemble model, all of the data within the training and testing datasets was standardized using the minimums and maximums (see code snippet below). The testing dataset was stadardized with the mins and maxs from the training set to elimate the possibility of bias. 
+
+## Data Standardization
+
+```matlab
+%-- Find Minimums and Maximums -- 
+[min_tr, max_tr] = cellfun(@find_range, predic_all_tr, 'UniformOutput', false);
+[min_p1, min_p2, min_p3, min_p4,min_vvar_p1, min_vvar_p2, min_vvar_p3, min_vvar_p4, min_hvar_p1, min_hvar_p2, min_hvar_p3, min_hvar_p4, min_hangle,min_flag] = min_tr{:};
+
+[max_p1, max_p2, max_p3, max_p4,max_vvar_p1, max_vvar_p2, max_vvar_p3, max_vvar_p4,max_hvar_p1, max_hvar_p2, max_hvar_p3, max_hvar_p4, max_hangle,max_flag] = max_tr{:};
+
+%Archived Mins and Maxs
+[min_arch, max_arch] = find_range(arch_tr);
+
+%-- Standardize Values for Machine Learning --
+std_values_tr = cellfun(@(x, min_val, max_val) standardizeData(x, min_val, max_val), predic_all_tr, min_tr, max_tr, 'UniformOutput', false);
+[sp1_tr, sp2_tr, sp3_tr, sp4_tr,svvar_p1_tr, svvar_p2_tr, svvar_p3_tr, svvar_p4_tr,shvar_p1_tr, shvar_p2_tr, shvar_p3_tr, shvvar_p4_tr,shangle_tr,sflag_tr] = std_values_tr{:};
+[sarch_tr] = standardizeData(arch_tr,min_arch,max_arch);
+```
+
+A **supervised learning** learning approach was implemented to predict altitudes of mixed layer heights (in meters) for multiple flights within the ACT-America and CPEX-CV field campaigns. 23 flights were randomized and split into training (19 flights) and testing (5 flights). A regression ensemble approach was implemented to model the height values. Bootstrap aggregating (bagging) was selected to help reduce overfitting and the impact of outliers within the training data. 
 
 ## Implementation
 ```matlab
@@ -76,7 +107,7 @@ end
 
 ![gifbug](assets/IMG/importance.png)
 
-*Figure 3: Predictor importance for ensemble learning method.*
+*Figure 2: Predictor importance for ensemble learning method.*
 
 ## Summary Statistics 
 
@@ -85,8 +116,7 @@ end
 | Default               | -0.04 | 0.19  | -41.31 | 193.21| 324.94 | 0.81 |
 | Ensemble Learning     | -0.01 | 0.09  | -14.14 | 92.94 | 157.39 | 0.96 |
 
-
-*Table 1: Summary of Ensemble and default model performance.*
+*Table 2: Summary of Ensemble and default model performance.*
 
 To assess the performance of the ensemble learning model, predicted values were evalated against the quality-checked MLHs (observed values). In addition, the performance of the default method was assessed for comparison. 
 
