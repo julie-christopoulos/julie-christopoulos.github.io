@@ -1,5 +1,5 @@
 # **AOS C204 Final Project** 
-<img align="right" width="220" height="420" src="/assets/IMG/julie.jpg">
+<img align="right" width="220" height="320" src="/assets/IMG/julie.jpg">
 
 For this project, you will be applying your skills to train a machine learning model using real-world data, then publishing a report on your own website.
 
