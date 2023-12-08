@@ -1,7 +1,7 @@
 
 <img align="right" width="220" height="320" src="/assets/IMG/julie.jpg">
 
-##  **Project Title : Machine Learning for Predicting Aerosol Mixed Layer Heights**
+# **Machine Learning for Predicting Aerosol Mixed Layer Heights**
 
 # **Overview**
 
