@@ -1,7 +1,7 @@
 
 
 
-# Machine Learning for Predicting Aerosol Mixed Layer Heights
+# 
 ***
 ## Introduction 
 
