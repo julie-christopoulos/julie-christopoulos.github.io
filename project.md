@@ -136,7 +136,7 @@ The plots in **Fig. 3** and **Fig. 4** illustrate the performance of the predict
 Below are backscatter curtain plots illustrating the modeled (magenta) and quality checked MLHs (white) for two flights in the test dataset. **Figures 5** and **6** are representative of terrestrial- and marine-based boundary layers respectively. As shown, terrestrial boundary layers experience more turbulent mixing (e.g., variable backscatter gradients) while marine boundary layers contain high aerosol loading and less turbulent mixing (as shown). These figures illustrate the model's capability of capturing a MLH that is representative of the archived, quality-checked values, even when approached with these complex scenes. In these cases, correlations were significant (>0.9) and the erros/biases were relatively low compared to the observed values.
 
 
-### 20190710 ACT-America Test Flight 
+### ACT-America Test Flight 
 
 ![gifbug](assets/IMG/20190710_bsc.png)
 
@@ -148,7 +148,7 @@ Below are backscatter curtain plots illustrating the modeled (magenta) and quali
 
 **Table 3.** Ensemble model performance for a flight on June 10, 2019.
 
-### 20210828 CPEX-AW Test Flight 
+### CPEX-AW Test Flight 
 ![gifbug](assets/IMG/20210828_bsc.png)
 
 **Figure 6.** Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for August 28, 2021 (CPEX-AW).
