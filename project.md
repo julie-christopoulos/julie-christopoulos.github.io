@@ -1,8 +1,3 @@
-
-
-
- 
-# Machine Learning for Predicting Aerosol Mixed Layer Heights
 ## Introduction 
 
 The planetary boundary (PBL) is the lowest, turbulent layer of the atmosphere and serves to facilitate a multitude of feedbacks in the atmosphere, including those between the atmosphere, ocean, and land. The height of the boundary layer (PBLH) is responsible for governing many tropospheric activities, such as aerosol distributions, convection, and cloud formation **[1]**. Its complex evolution challenges observations of the PBL. NASA Langley (LaRC) hosts a suite of airborne High Spectral Resolution Lidars (HSRL) and differential absorption lidars (DIAL), whose observables of aerosol properties (e.g., 532nm backscatter) aid in identifying the PBLH. The term mixed layer height (MLH) is one way to describe the height of the boundary layer when derived from aerosol gradients.
