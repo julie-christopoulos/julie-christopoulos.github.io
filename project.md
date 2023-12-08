@@ -8,7 +8,7 @@
 
 The planetary boundary (PBL) is the lowest, turbulent layer of the atmosphere and serves to facilitate a multitude of feedbacks in the atmosphere, including those between the atmosphere, ocean, and land. The height of the boundary layer (PBLH) is responsible for governing many tropospheric activities, such as aerosol distributions, convection, and cloud formation [1]. Its complex evolution challenges observations of the PBL. NASA Langley (LaRC) hosts a suite of airborne High Spectral Resolution Lidars (HSRL) and differential absorption lidars (DIAL), whose observables of aerosol properties (532nm backscatter) aid in identifying the PBLH. The term mixed layer height (MLH) is one way to describe the height of the boundary layer when it is determined from aerosol gradients.
 
-This project aims to improve MLH estimates derived from airborne HSRLs to allow for more automated retrievals over a wide range of atmospheric and surface conditions. Currently, the LaRC airborne lidar algorithm utilizes the Haar wavelet covariance transform method [2] to derive MLHs. In this approach, a Haar wavelet function is used to transform a 532nm lidar backscatter profile. The lowest altitude maximum of the transform is determined to be the height of the boundary layer. The algorithm’s implementation on HSRL datasets is mostly automized, although it requires manual inputs of threshold values for WCT peak detection. In addition, a final manual quality control phase is needed to correct remaining outliers by utilizing other observations or based on intuitive situations [3]. It is thus evident, further research is needed to create a more robust and automated MLH algorithm. In other words, an algorithm that can produce reliable MLHs without the need of manual adjustments. 
+This project aims to improve MLH estimates derived from airborne HSRLs to allow for more automated retrievals over a wide range of atmospheric and surface conditions. Currently, the LaRC airborne lidar algorithm utilizes the Haar wavelet covariance transform method [2,3,4] to derive MLHs. In this approach, a Haar wavelet function is used to transform a 532nm lidar backscatter profile. The lowest altitude maximum of the transform is determined to be the height of the boundary layer. The algorithm’s implementation on HSRL datasets is mostly automized, although it requires manual inputs of threshold values for WCT peak detection. In addition, a final manual quality control phase is needed to correct remaining outliers by utilizing other observations or based on intuitive situations [5]. It is thus evident, further research is needed to create a more robust and automated MLH algorithm. In other words, an algorithm that can produce reliable MLHs without the need of manual adjustments. 
 
 To address this, a supervised machine learning approach is taken using ensemble learning (regression method). Two lidar field campaigns are selected (CPEX-AW (2021), ACT-America (2019) to predict MLHs for several test flights over land and over the ocean. The resulting predictions are evaluated against the quality-checked MLHs and a default method to assess improvement. Overall, increased model performance with the inclusion of ensemble learning was observed compared to the default method of prediction, illustrating the advantage of automizing MLH predictions. 
 
@@ -187,7 +187,15 @@ Butler, C. F., Cook, A. L., Harper, D. B., and Froyd, K. D.: Aerosol classificat
 airborne High Spectral Resolution Lidar measurements – methodology and examples.
 Atmos. Meas. Tech., 5, 73–98 (2012).
 
-* [3] Scarino, A. J., Obland, M. D., Fast, J. D., Burton, S. P., Ferrare, R. A., Hostetler, C. A.,
+* [3]Brooks, I. M.: Finding boundary layer top: Application of a wavelet
+covariance transform to lidar backscatter profiles, J. Atmos.
+Oceanic Tech., 20, 1092–1105, 2003.
+
+* [4] Davis, K.J., Gamage, N., Hagelberg, C., Kiemle, C., Lenschow, D.,
+and Sullivan, P.: An objective method for deriving atmospheric
+structure from airborne lidar ob
+
+* [5] Scarino, A. J., Obland, M. D., Fast, J. D., Burton, S. P., Ferrare, R. A., Hostetler, C. A.,
 Berg, L. K., Lefer, B., Haman, C., Hair, J. W., Rogers, R. R., Butler, C., Cook, A. L., and
 Harper, D. B.: Comparison of mixed layer heights from airborne high spectral resolution
 lidar, ground-based measurements, and the WRF-Chem model during CalNex and
