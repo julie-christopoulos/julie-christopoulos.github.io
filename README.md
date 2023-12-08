@@ -2,6 +2,7 @@
 <img align="right" width="220" height="320" src="/assets/IMG/julie.jpg">
 
 # **Machine Learning for Predicting Aerosol Mixed Layer Heights**
+## Julianna's C204 Final Project 
 
 
 # **Overview**
