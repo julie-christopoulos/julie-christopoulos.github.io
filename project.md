@@ -171,7 +171,7 @@ Overall, improvements in aerosol mixed layer height prediction will prove useful
 
 A number of approaches can be taken to further develop this automized algorithm: 
 
-* 1)**It would be beneficial in the future to include more MLH scenes from different contexts (e.g. observations from different times, regions, environments)**. Providing more complex scenes in different regions could provide more context for the algorithm. Field campaigns such as 2020-2022 ACTIVATE, CAMP2Ex (2019), LISTOS (2018), TRACER-AQ (2021), and CPEX-CV (2022) could be incorporated into such an algorithm. 
+* 1)**It would be beneficial in the future to include more MLH scenes from different contexts (e.g. observations from different times, regions, environments)**. Providing more complex scenes in different regions could provide more context for the algorithm. Field campaigns such as 2020 ACTIVATE, 2021 ACTIVATE, 2022 ACTIVATE, CAMP2Ex (2019), LISTOS (2018), TRACER-AQ (2021), and CPEX-CV (2022) could be incorporated into such an algorithm. 
 
 * **In addition, several other lidar observables could prove to be useful in addition to the predictors shown in this project**.For example, 1064nm aerosol depolarization, relative humidity, and mixing ratio gradients could be used as predictors to characterize the height of the boundary layer as well. 
 
