@@ -1,5 +1,5 @@
 
-<img align="right" width="220" height="320" src="/assets/IMG/julie.jpg">
+<img align="right" width="220" height="300" src="/assets/IMG/julie.jpg">
 
 # **Machine Learning for Predicting Aerosol Mixed Layer Heights**
 ## By: Julianna Christopoulos
