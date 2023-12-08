@@ -19,8 +19,8 @@ To address this, a supervised machine learning approach is taken using ensemble 
 This project utilizes field campaign datasets obtained from the LaRC High Altitude Observatory Instrument (HALO), which employs the HSRL and DIAL techniques to provide profiles of aerosols intensive and extensive properties,and water vapor. Data is selected from two NASA field campaigns, ACT-America (2019) and CPEX-AW (2021). These two campaigns are chosen because they are representative marine- (CPEX-AW) and terrestrial-type (ACT-America) planetary boundary layers, allowing for variability in PBLH scenes. 
 
 **ACT-America 2019** (Atmospheric Carbon and Transport - America):
-* <u>Location:<u> Eastern U.S. 
-* <u>Mission Background:<u> Airborne campaign to study the transport and fluxes of atmospheric carbon dioxide and methane
+* Location: Eastern U.S. 
+* Mission Background: Airborne campaign to study the transport and fluxes of atmospheric carbon dioxide and methane
 * Instrument: HALO (High Altitude Lidar Observatory)
 
 **CPEX-AW 2021** (Convective Processes Experiment - Aerosols and Winds):
@@ -30,7 +30,7 @@ This project utilizes field campaign datasets obtained from the LaRC High Altitu
 
 ## Predictor Selection
 
-**Table 1.** illustrates the predictors selected for the ensemble learning algorithm. The first four predictions represent various MLHs derived using the WCT method for constant thresholds, ranging from 0.00001-0.01. These thresholds fall within the range of the typical thresholds selected in the current MLH algorithm. These height predictors are used to test the sensitivity of particular threshold values. Predictors 5-9 are associated with these four height predictors. The variance of the 532nm aerosol backscatter gradient is computed 360m above and below the MLHs associated with the first four predictors. Predictors 10-13 are also associated with the first four height predictors. These predictors were computed as the horizontal variance in MLHs. A temporal variance is computed for 10-time steps before and after each of the derived heights (data is available every 10s). Next, the solar hour angle is computed from the geographic variables (i.e. gps latitude, gps longitude). This was selected as a predictor to help capture the development of the boundary layer based on the diurnal cycle. Lastly, I computed a terrain flag based on the geographical coordinates of the observations. The terrain flag is incorporated to help the algorithm identify between marine- and terrestrial-type MLHs. 
+**Table 1.** illustrates the predictors selected for the ensemble learning algorithm. The first four predictions represent various MLHs derived using the WCT method for constant thresholds, ranging from 0.00001 to 0.01. These thresholds fall within the range of the typical thresholds selected in the current MLH algorithm. These height predictors are used to test the sensitivity of particular threshold values. Predictors 5-9 are associated with these four height predictors. The variance of the 532nm aerosol backscatter gradient is computed 360m above and below the MLHs associated with the first four predictors. Predictors 10-13 are also associated with the first four height predictors. These predictors were computed as the horizontal variance in MLHs. A temporal variance is computed for 10-time steps before and after each of the derived heights (data is available every 10s). Next, the solar hour angle is computed from the geographic variables (i.e. gps latitude, gps longitude). This was selected as a predictor to help capture the development of the boundary layer based on the diurnal cycle. Lastly, I computed a terrain flag based on the geographical coordinates of the observations. The terrain flag is incorporated to help the algorithm identify between marine- and terrestrial-type MLHs. 
 
 | No. | Description                                                 |
 | --- | ----------------------------------------------------------- |
