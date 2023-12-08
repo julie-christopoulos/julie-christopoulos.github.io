@@ -7,8 +7,7 @@
 
 # **Overview**
 
-This project focuses on enhancing the estimation of mixed layer height (MLH) in the planetary boundary layer (PBL) using datasets derived from NASA Langley's airborne High Spectral Resolution Lidars (HSRLs). The project aims to automate MLH retrieval by applying a supervised machine learning approach, with regression ensemble learning. Two recent lidar field campaigns are used to predict MLHs for test flights, showing improved performance compared to the existing method. Further refinement and evaluation on complex lidar scenes are needed for a more robust and automated MLH algorithm.
-
+This project is dedicated to the estimation of mixed layer heights (MLH) within the planetary boundary layer (PBL) through the utilization of datasets obtained from NASA Langley's airborne High Spectral Resolution Lidars (HSRLs). The primary objective is to enhance MLH retrieval by employing a supervised machine learning approach, specifically utilizing regression ensemble learning. Leveraging data from two recent lidar field campaigns, the project seeks to automate MLH predictions for test flights, showcasing a notable improvement in performance when compared to existing methodologies. To ensure the algorithm's robustness and automation, ongoing efforts involve further refinement and evaluation, particularly in addressing complex lidar scenes.
 
 
 
