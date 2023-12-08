@@ -1,22 +1,7 @@
 # **AOS C204 Final Project** 
 <img align="right" width="220" height="320" src="/assets/IMG/julie.jpg">
 
-For this project, you will be applying your skills to train a machine learning model using real-world data, then publishing a report on your own website.
 
-* To get data for your project, you could:
-  * use **your own data** from a separate research activity
-  * **scour the internet** to find something original, then preprocess it yourself - see the Module Overview on BruinLearn for some resources
-  * browse an archive of data designed for machine learning problems, such as the [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/datasets)
-
-* Your report should be in the region of 2000-2500 words with three to four figures, and written in a scientific language and style. [This template page](/project.md) gives an example structure that you could use, but feel free to make it your own.
-
-Your website will be a great addition to your CV, and a place to host future projects too since it doubles as a GitHub repository. The first step is to set up a project website like this one by following the instructions below. 
-
-## How does this website work?
-
-First, check out the Github repository for this site: [https://github.com/atmosalex/atmosalex.github.io/](https://github.com/atmosalex/atmosalex.github.io/).
-
-Using GitHub pages, you can write a website using markdown syntax - the same syntax we use to write comments in Google Colab notebooks. GitHub pages then takes the markdown file and renders it as a web page using a Jekyll theme. The markdown source code for this page [is shown here](https://github.com/atmosalex/atmosalex.github.io/blob/main/README.md?plain=1).
 
 ## Setting up your Project Website
 
