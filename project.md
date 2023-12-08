@@ -123,7 +123,7 @@ To assess the performance of the ensemble learning model, predicted values were 
 
 ![gifbug](assets/IMG/scatter.png)
 
-**Figure 3.** Summary of the observed vs. predicted values for 5 test flights.*
+**Figure 3.** Summary of the observed vs. predicted values for 5 test flights.
 
 ![gifbug](assets/IMG/residuals.png)
 
