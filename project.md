@@ -38,10 +38,10 @@ This project utilizes field campaign datasets obtained from the LaRC High Altitu
 | 2)  | MLH (Thresh = 0.0001) [m]                                      |
 | 3)  | MLH (Thresh = 0.001) [m]                                      |
 | 4)  | MLH (Thresh = 0.01)  [m]                                      |
-| 5-9)| Vertical Variance in 532 nm Backscatter Gradient (360 m above and below MLHs)|
-| 10-13) | Temporal Variance in MLHs associated with predictors 1-4  |
-| 14) | Solar Hour Angle [degrees]                                          |
-| 15) | Terrain Flag (land = 0; water = 1)                         |
+| 5-8)| Vertical Variance in 532 nm Backscatter Gradient (360 m above and below MLHs)|
+| 9-12) | Temporal Variance in MLHs associated with predictors 1-4  |
+| 13) | Solar Hour Angle [degrees]                                          |
+| 14) | Terrain Flag (land = 0; water = 1)                         |
 
 **Table 1.** Predictors incorporated in the ensemble learning MLH algorithm.
 
