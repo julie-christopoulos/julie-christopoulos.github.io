@@ -159,7 +159,7 @@ Below are backscatter curtain plots illustrating the modeled (magenta) and quali
 
 **Table 4*: Ensemble model performance for a flight on August 28, 2021.*
 
-## Conclusion
+# Conclusion
 
 Robust, accurate estimates of MLHs are crucial for understanding various processes within the troposphere. The current method of MLH prediction is far from automized, requring manually-derived time dependent thresholds to determine an optimal estimate. This project aimed to move away from this time-consuming process by utilizing the automization potential of machine learning. A supervised machine learning approach was taken to help automize MLH prediction with regression in an attempt to produce results similar to those of the quality-checked MLHs. Leveraging observables from the High-Altitude Lidar Observatory (HALO) and datasets from two airborne field campaigns (ACT-America (2019) and CPEX-AW (2021), I was able to produce automized MLHs for 5 test flights using an ensemble learning method (random forest). 
 
@@ -167,7 +167,7 @@ The results revealed the following: **1) comparable MLHs to the quality-checked 
 
 Overall, improvements in aerosol mixed layer height prediction will prove useful for many research applications. For example, in an air quality contex, such MLHs could serve to enhance chemical models (WRF-Chem) and deepen our understanding of PBL-air quality interactions.
 
-## Future Work
+# Future Work
 
 A number of approaches can be taken to further develop this automized algorithm: 
 
@@ -177,7 +177,7 @@ A number of approaches can be taken to further develop this automized algorithm:
 
 * 3)**Lastly, an independent dataset is needed to provide additional evaluation**. For the marine-based field campaigns, dropsondes were launched during many of the research flights providing vertical profiles of the atmosphere. PBLHs derived from those measurements could provide an additional independent dataset to evaluate the ensemble learning algorithm. The incorporation of these variables and independent data could prove useful in correcting the algorithm further. 
 
-## References
+# References
 
 * [1] Liu, S., & Liang, X. Observed Diurnal Cycle Climatology of Planetary Boundary Layer
 Height. Journal of Climate, 23(21), 5790-5809 (2010).
