@@ -110,7 +110,7 @@ To gain insight as to which predictors held the most weight, the predictor impor
 
 ## Summary Statistics 
 
-| Method                | NMB   | NME   | MB     | ME    | RMSE   | CORR |
+| Method                | NMB   | NME   | MB [m]    | ME [m]   | RMSE [m]  | CORR |
 |-----------------------|-------|-------|--------|-------|--------|------|
 | Default               | -0.04 | 0.19  | -41.31 | 193.21| 324.94 | 0.81 |
 | Ensemble Learning     | -0.01 | 0.09  | -14.14 | 92.94 | 157.39 | 0.96 |
@@ -142,7 +142,7 @@ Below are backscatter curtain plots illustrating the modeled (magenta) and quali
 
 **Figure 5.** Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for June 10, 2019 (ACT-America).
 
-| Method              | NMB   | NME   | MB      | ME     | RMSE   | CORR |
+| Method              | NMB   | NME   | MB [m]     | ME [m]    | RMSE [m]  | CORR |
 |---------------------|-------|-------|---------|--------|--------|------|
 | Ensemble Learning   | -0.02 | 0.04  | -30.27  | 69.42  | 92.69  | 0.94 |
 
@@ -153,7 +153,7 @@ Below are backscatter curtain plots illustrating the modeled (magenta) and quali
 
 **Figure 6.** Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for August 28, 2021 (CPEX-AW).
 
-| Method            | NMB   | NME   | MB    | ME    | RMSE   | CORR |
+| Method            | NMB   | NME   | MB [m]   | ME [m]   | RMSE [m]  | CORR |
 |-------------------|-------|-------|-------|-------|--------|------|
 | Ensemble Learning | 0.02  | 0.06  | 12.07 | 34.92 | 58.42  | 0.89 |
 
