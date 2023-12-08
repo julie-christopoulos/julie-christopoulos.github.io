@@ -151,7 +151,7 @@ Below are backscatter curtain plots illustrating the modeled (magenta) and quali
 ### 20210828 CPEX-AW Test Flight 
 ![gifbug](assets/IMG/20210828_bsc.png)
 
-**Figure 6.** Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for August 28, 2021 (CPEX-AW).*
+**Figure 6.** Predicted MLHs for ensemble (magenta) and quality-checked (white) methods for August 28, 2021 (CPEX-AW).
 
 | Method            | NMB   | NME   | MB    | ME    | RMSE   | CORR |
 |-------------------|-------|-------|-------|-------|--------|------|
