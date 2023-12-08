@@ -173,7 +173,7 @@ A number of approaches can be taken to further develop this automized algorithm:
 
 * 1)**It would be beneficial in the future to include more MLH scenes from different contexts (e.g. observations from different times, regions, environments)**. Providing more complex scenes in different regions could provide more context for the algorithm. Field campaigns such as 2020 ACTIVATE, 2021 ACTIVATE, 2022 ACTIVATE, CAMP2Ex (2019), LISTOS (2018), TRACER-AQ (2021), and CPEX-CV (2022) could be incorporated into such an algorithm. 
 
-* **In addition, several other lidar observables could prove to be useful in addition to the predictors shown in this project**.For example, 1064nm aerosol depolarization, relative humidity, and mixing ratio gradients could be used as predictors to characterize the height of the boundary layer as well. 
+* 2)**In addition, several other lidar observables could prove to be useful in addition to the predictors shown in this project**.For example, 1064nm aerosol depolarization, relative humidity, and mixing ratio gradients could be used as predictors to characterize the height of the boundary layer as well. 
 
 * 3)**Lastly, an independent dataset is needed to provide additional evaluation**. For the marine-based field campaigns, dropsondes were launched during many of the research flights providing vertical profiles of the atmosphere. PBLHs derived from those measurements could provide an additional independent dataset to evaluate the ensemble learning algorithm. The incorporation of these variables and independent data could prove useful in correcting the algorithm further. 
 
